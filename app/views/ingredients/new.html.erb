@@ -19,4 +19,5 @@
   </div>
 </div>
 
-<%= link_to "Finish", recipe_path(@recipe), method: :get, id: "create-link", class: "hidden" %>
+<%= link_to "Add steps", new_recipe_step_path(@recipe), method: :get, id: "create-link", class: "hidden" %>
+<%#= link_to "Add steps", recipe_path(@recipe), method: :get, id: "create-link", class: "hidden" %>

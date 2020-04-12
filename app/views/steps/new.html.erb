@@ -1,0 +1,22 @@
+<h3>Add steps to <%= @recipe.name %> </h3>
+
+<% @recipe.steps.each do |step| %>
+  <div class="btn btn-primary text.white m-2 white-text fake-button" disabled="disabled">• <%= step.description %></div>
+<% end %>
+
+<button type="button" class="btn btn-outline-success text.white m-2" data-toggle="modal" data-target=".bd-example-modal-sm">Add Step +</button>
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content p-3">
+      <h4>Add Step</h4>
+      <%= simple_form_for [@recipe, @step] do |f| %>
+        <%= f.input :description, placeholder: 'Add enchiladas to the bowl...' %>
+        <br>
+        <%= f.button  :submit , name: @page_origin, value: "add", class: 'btn btn-outline-info light-btn'%>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= link_to "Finish", recipe_path(@recipe), method: :get, id: "create-link", class: "hidden" %>

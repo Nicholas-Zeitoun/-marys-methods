@@ -5,3 +5,9 @@
   <div class="btn btn-primary text.white m-2 white-text fake-button" disabled="disabled">• <%= ingredient.description %></div>
 <% end %>
 <p><%= @recipe.duration %></p>
+<h3>Steps</h3>
+<% @recipe.steps.each do |step| %>
+  <ul>
+    <li> <%= step.description %></li>
+  </ul>
+<% end %>

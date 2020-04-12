@@ -1,4 +1,7 @@
 <%= link_to "Back to recipes", recipes_path %>
 <h2><%= @recipe.name %></h2>
 <p><%= @recipe.description %></p>
+<% @recipe.ingredients.each do |ingredient| %>
+  <div class="btn btn-primary text.white m-2 white-text fake-button" disabled="disabled">• <%= ingredient.description %></div>
+<% end %>
 <p><%= @recipe.duration %></p>

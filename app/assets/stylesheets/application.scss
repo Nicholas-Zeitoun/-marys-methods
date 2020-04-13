@@ -12,10 +12,27 @@
 @import "components/index";
 @import "pages/index";
 
+.container {
+  max-width: 600px;
+  padding: 0px;
+}
+
 .olive-green {
   color: #BABF95 !important;
 }
 
 .terracotta {
   color: #C6B677 !important;
+}
+
+.steel {
+  color: #707070 !important;
+}
+
+h1, h2, li {
+  color: #393939;
+}
+
+body {
+  background-color: white;
 }

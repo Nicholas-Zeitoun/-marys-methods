@@ -1,23 +1,30 @@
-<h3>Add ingredients to <%= @recipe.name %> </h3>
+<div class="recipe-panel mt-4">
+  <h3>Add ingredients to <%= @recipe.name %> </h3>
 
-<% @recipe.ingredients.each do |ingredient| %>
-  <div class="btn btn-primary text.white m-2 white-text fake-button" disabled="disabled">• <%= ingredient.description %></div>
-<% end %>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <div class="btn btn-primary text.white m-2 white-text fake-button" disabled="disabled">• <%= ingredient.description %></div>
+  <% end %>
 
-<button type="button" class="btn btn-outline-success text.white m-2" data-toggle="modal" data-target=".bd-example-modal-sm">Add Ingredient +</button>
+  <button type="button" class="btn btn-outline-primary text.white m-2" data-toggle="modal" data-target=".bd-example-modal-sm">Add Ingredient +</button>
 
-<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content p-3">
-      <h4>Add Ingredient</h4>
-      <%= simple_form_for [@recipe, @ingredient] do |f| %>
-        <%= f.input :description, placeholder: '10cl, two drops of...' %>
-        <br>
-        <%= f.button  :submit , name: @page_origin, value: "add", class: 'btn btn-outline-info light-btn'%>
-      <% end %>
+  <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content p-3">
+        <h4>Add Ingredient</h4>
+        <%= simple_form_for [@recipe, @ingredient] do |f| %>
+          <%= f.input :description, placeholder: '10cl, two drops of...' %>
+          <br>
+          <%= f.button  :submit , name: @page_origin, value: "add", class: 'btn btn-outline-info light-btn'%>
+        <% end %>
+      </div>
     </div>
   </div>
+
+  <%#= link_to "Add steps", recipe_path(@recipe), method: :get, id: "create-link", class: "hidden" %>
 </div>
 
-<%= link_to "Add steps", new_recipe_step_path(@recipe), method: :get, id: "create-link", class: "hidden" %>
-<%#= link_to "Add steps", recipe_path(@recipe), method: :get, id: "create-link", class: "hidden" %>
+<div class="row mt-4 text-right">
+  <div class="col-12">
+    <%= link_to "Add steps", new_recipe_step_path(@recipe), class: "btn mm-btn text-white" %>
+  </div>
+</div>

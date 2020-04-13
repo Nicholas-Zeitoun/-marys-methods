@@ -45,7 +45,8 @@
   <div class="col-12">
     <h5 class="olive-green">Steps</h5>
     <ul>
-      <% @recipe.steps.each do |step| %>
+      <% @recipe.steps.each_with_index do |step, index| %>
+        <h6> Step <%= index += 1 %> </h6>
         <li class="steel"> <%= step.description %></li>
       <% end %>
     </ul>

@@ -1,5 +1,8 @@
 <%= link_to "Back to recipes", recipes_path %>
 <h2><%= @recipe.name %></h2>
+<% if @recipe.photo.attached? %>
+  <%= cl_image_tag @recipe.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
 <p><%= @recipe.description %></p>
 <% @recipe.ingredients.each do |ingredient| %>
   <div class="btn btn-primary text.white m-2 white-text fake-button" disabled="disabled">• <%= ingredient.description %></div>

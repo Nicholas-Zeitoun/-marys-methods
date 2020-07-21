@@ -52,3 +52,9 @@
     </ul>
   </div>
 </div>
+
+<div class="row mt-4 mb-4">
+  <div class="col-12">
+    <p><%= link_to "Edit Recipe", edit_recipe_path(@recipe) %> | <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete, class: "delete" %></p>
+  </div>
+</div>

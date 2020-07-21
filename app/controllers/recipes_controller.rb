@@ -24,6 +24,22 @@ class RecipesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @recipe.update(recipe_params)
+      redirect_to new_recipe_ingredient_path(@recipe)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @recipe.destroy
+    redirect_to root_path
+  end
+
   private
 
   def set_recipe

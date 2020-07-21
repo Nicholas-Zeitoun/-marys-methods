@@ -17,7 +17,7 @@ class RecipesController < ApplicationController
     @recipe.user = current_user
 
     if @recipe.save
-      redirect_to new_recipe_ingredient_path(@recipe)
+      redirect_to recipe_path(@recipe)
       # redirect_to recipe_path(@recipe)
     else
       render :new
@@ -25,11 +25,12 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @ingredient = Ingredient.new
   end
 
   def update
     if @recipe.update(recipe_params)
-      redirect_to new_recipe_ingredient_path(@recipe)
+      redirect_to recipe_path(@recipe)
     else
       render :edit
     end

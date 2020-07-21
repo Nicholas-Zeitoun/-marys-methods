@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # root to: 'pages#home'
   root to: 'recipes#index'
   resources :recipes do
-    resources :ingredients, only: [:new, :create]
-    resources :steps, only: [:new, :create]
+    resources :ingredients, only: [:new, :create, :edit, :destroy]
+    resources :steps, only: [:new, :create, :delete]
   end
 end

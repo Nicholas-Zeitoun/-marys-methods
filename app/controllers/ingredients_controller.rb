@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-  before_action :set_recipe, only: [:new, :show, :create]
+  before_action :set_recipe, only: [:new, :show, :create, :edit, :destroy]
 
   def new
     @ingredient = Ingredient.new
@@ -16,9 +16,19 @@ class IngredientsController < ApplicationController
       if @ingredient.save
         redirect_to new_recipe_ingredient_path(@recipe)
       else
+        raise
         render :new
       end
     # end
+  end
+
+  def edit
+    @ingredient = Ingredient.new
+  end
+
+  def destroy
+    @ingredient.destroy
+    redirect_to edit_recipe_path(@recipe)
   end
 
   private

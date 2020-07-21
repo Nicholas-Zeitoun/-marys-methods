@@ -1,13 +1,72 @@
 <div class="recipe-panel mt-4">
-  <h1>Edit Recipe</h1>
-  <%= simple_form_for @recipe do |f| %>
+<h1>Edit Recipe</h1>
+<%= simple_form_for @recipe do |f| %>
+<div class="row">
+  <div class="col-12 mt-4">
+    <i class="fas fa-arrow-left olive-green"></i> <%= link_to "Back to recipes", recipes_path %>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-12">
     <%= f.input :name %>
-    <%= f.input :description %>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-12">
     <%= f.input :duration, label: "Duration (Minutes)" %>
-    <%= f.input :photo, as: :file %>
-    <div class="form-actions text-center">
-      <%= f.button :submit, "Update", class: "btn mm-btn text-white" %>
-    </div>
-    <%#= f.button :submit, "Log in", class: "btn mm-btn text-white" %>
-  <% end %>
+  </div>
+</div>
+
+<div class="row mt-4 mb-4">
+  <div class="col-12">
+    <% if @recipe.photo.attached? %>
+      <%= cl_image_tag @recipe.photo.key, height: 350, width: 500, crop: :fill, :class => "recipe-image mb-4" %>
+      <%= f.input :photo, as: :file, :class => "mt-4" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-12">
+    <h5 class="olive-green">Description</h5>
+    <%= f.input :description, label: false, as: :text, autofocus: true, :input_html => {:style => 'width: 100%', :rows => 5, class: 'response-project'} %>
+  </div>
+</div>
+
+<div class="form-actions text-center">
+  <%= f.button :submit, "Update", class: "btn mm-btn text-white" %>
+</div>
+<% end %>
+
+<hr>
+
+<!-- Recipe Ingredients -->
+<div class="row mt-4">
+  <div class="col-12">
+    <h5 class="olive-green">Ingredients</h5>
+    <ul>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <li class="steel"><%= ingredient.description %> </li>
+      <% end %>
+    </ul>
+    <%= link_to "Add Ingredients", new_recipe_ingredient_path(@recipe), class: 'btn btn-outline-primary text.white m-2' %>
+  </div>
+</div>
+
+<!-- Recipe Steps -->
+<div class="row mt-4 mb-4">
+  <div class="col-12">
+    <h5 class="olive-green">Steps</h5>
+    <ul>
+      <% @recipe.steps.each_with_index do |step, index| %>
+        <h6> Step <%= index += 1 %> </h6>
+        <li class="steel"> <%= step.description %></li>
+      <% end %>
+    </ul>
+    <%= link_to "Add Steps", new_recipe_step_path(@recipe), class: 'btn btn-outline-primary text.white m-2' %>
+  </div>
+</div>
+
 </div>

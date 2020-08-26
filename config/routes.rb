@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     resources :ingredients, only: [:new, :create, :edit, :destroy]
     resources :steps, only: [:new, :create, :delete]
   end
+  resources :categories
 end

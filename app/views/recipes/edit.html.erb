@@ -30,6 +30,13 @@
 
 <div class="row mt-4">
   <div class="col-12">
+    <h5 class="olive-green">Category</h5>
+    <%= f.association :category, label: 'Category' %>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-12">
     <h5 class="olive-green">Description</h5>
     <%= f.input :description, label: false, as: :text, autofocus: true, :input_html => {:style => 'width: 100%', :rows => 5, class: 'response-project'} %>
   </div>

@@ -3,6 +3,19 @@
     <%= image_tag asset_path('marys-food-logo.svg') %>
     <% end %>
 
+  <div class="d-flex">
+    <%= form_tag recipes_path, method: :get, class: "d-inline-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a Recipe"
+      %>
+    <% end %>
+      <div class="pl-2">
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      </div>
+  </div>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
